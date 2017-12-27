@@ -1,14 +1,9 @@
 \begin{thebibliography}{}
 
-\bibitem[Moore and Lopes, 1999]{Moore99}
-Moore, R. and Lopes, J. (1999).
-\newblock Paper templates.
-\newblock In {\em TEMPLATE'06, 1st International Conference on Template
-  Production}. SciTePress.
-
-\bibitem[Smith, 1998]{Smith98}
-Smith, J. (1998).
-\newblock {\em The Book}.
-\newblock The publishing company, London, 2nd edition.
+\bibitem[Majchrzak et~al., 2015]{MDCP2015}
+Majchrzak, T.~A., Ernsting, J., and Kuchen, H. (2015).
+\newblock Model-driven cross-platform apps: Towards business practicability.
+\newblock {\em Proceedings of the CAiSE 2015 Forum at the 27th International
+  Conference on Advanced Information Systems Engineering (CAiSE 2015)}.
 
 \end{thebibliography}
