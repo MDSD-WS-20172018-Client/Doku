@@ -1,5 +1,12 @@
 \begin{thebibliography}{}
 
+\bibitem[Heitk\"otter et~al., 2013]{DSLMD2_2013}
+Heitk\"otter, H., Majchrzak, T.~A., and Kuchen, H. (2013).
+\newblock Md2-dsl – eine domänenspezifische sprache zur beschreibung und
+  generierung mobiler anwendungen.
+\newblock {\em Proceedings der 6. Arbeitstagung Programmiersprachen (ATPS),
+  Software Engineering}.
+
 \bibitem[Majchrzak et~al., 2015]{MDCP2015}
 Majchrzak, T.~A., Ernsting, J., and Kuchen, H. (2015).
 \newblock Model-driven cross-platform apps: Towards business practicability.
