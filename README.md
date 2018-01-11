@@ -16,4 +16,4 @@ Wenn eine Quelle in der bib-Datei hinzugefügt wurde, kann man in den tex-Dateie
 
 ## Arbeitsablauf
 Das folgnde Bild zeigt den Arbeitsablauf, bei der Entwicklung der App.   
-![alt text](https://github.com/MDSD-WS-20172018-Client/Doku/tree/master/Abbildungen/Arbeitsschritte.png)
+![Arbeitsschritte](https://github.com/MDSD-WS-20172018-Client/Doku/tree/master/Abbildungen/Arbeitsschritte.png)
