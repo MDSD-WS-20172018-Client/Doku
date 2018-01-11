@@ -13,3 +13,7 @@ Es sei denn, es wird eine andere Lösung gefunden.
 Die Datei *example.bib* enthält die Quellen.   
 Wenn man eine neue eintragen will, benutzt man *JabRef* (Programm) dafür.    
 Wenn eine Quelle in der bib-Datei hinzugefügt wurde, kann man in den tex-Dateien den Befehl *cite* benutzen um darauf zu referenzieren. Erst dann wird die Quelle auch im Paper angezeigt.
+
+## Arbeitsablauf
+Das folgnde Bild zeigt den Arbeitsablauf, bei der Entwicklung der App.   
+![alt text](https://github.com/MDSD-WS-20172018-Client/Doku/Abbildungen/Arbeitsschritte.png)
