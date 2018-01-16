@@ -12,21 +12,29 @@ Antwort 200: Die Operation war erfolgreich\\
 Antwort 400: Schlechte Anfrage, falls der Nutzer ung\"ultige oder schon vorhandene Parameter eintr\"agt.  
 
 	\item Post (Nutzer im System einloggen) \\
-Hier ist das Einloggen von einem Nutzer im System möglich. Diese Funktionnalität ist nur möglich, wenn der Nutzer schon registriert ist. Daf\"ur braucht man: \\
+Hier ist das Einloggen von einem Nutzer im System m\"oglich. Diese Funktionnalit\"at ist nur m\"oglich, wenn der Nutzer schon registriert ist. Daf\"ur braucht man: \\
 	- Ein Username \\
 	- Ein Passwort \\
 Antwort 200: Die Operation war erfolgreich \\ 
 Antwort 400: Schlechte Anfrage, falls der Nutzer ung\"ultige oder schon vorhandene Parameter eintr\"agt.  
 	\item Delete (Meldet die aktuelle angemeldete Benutzersitzung ab)
-Hier ist die Abmeldung von der Sitzung möglich. Daf\"ur braucht man den Token vom Nutzer \\
+Hier ist die Abmeldung von der Sitzung m\"oglich. Daf\"ur braucht man den Token vom Nutzer \\
 Antwort 200: Die Operation war erfolgreich \\ 
 Antwort 400: Schlechte Anfrage, falls der Nutzer ung\"ultige oder schon vorhandene Parameter eintr\"agt.  
 	\end{itemize}
 
 \item Operationen auf eine Datei
 	\begin{itemize}
+	\item Post (Hochladen von Dateien)
+Hier ist das Hochladen von einer Datei m\"oglich. Daf\"ur braucht man: \\
+	- Der Token \\
+	- Der FolderId \\
+	- Die Datei \\
+Antwort 200: Die Operation war erfolgreich \\ 
+Antwort 400: Schlechte Anfrage, Im Fall die Größe der Datei größer als 30Mb ist.
+Antwort 403: Verboten
+Antwort 404: Nicht gefunden
 	\item Get
-	\item Post
 	\item Put
 	\item Delete
 	\end{itemize}
