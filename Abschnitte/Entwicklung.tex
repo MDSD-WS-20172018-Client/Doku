@@ -31,10 +31,17 @@ Hier ist das Hochladen von einer Datei m\"oglich. Daf\"ur braucht man: \\
 	- Der FolderId \\
 	- Die Datei \\
 Antwort 200: Die Operation war erfolgreich \\ 
-Antwort 400: Schlechte Anfrage, Im Fall die Größe der Datei größer als 30Mb ist.
-Antwort 403: Verboten
+Antwort 400: Schlechte Anfrage, Im Fall die Gr\"o{\ss}e der Datei gr\"o{\ss}er als 30Mb ist. \\
+Antwort 403: Verboten \\
 Antwort 404: Nicht gefunden
-	\item Get
+	\item Get (Herunterladen von Dateien)
+Hier ist das herunterladen von einer Datei m\"oglich. Daf\"ur braucht man: \\
+	- Der Token \\
+	- Der FolderId (Id vom \"ubergeordneten Ordner) \\
+	- Die DateiId (Id von der Datei) \\
+Antwort 200: Die Operation war erfolgreich \\ 
+Antwort 403: Verboten \\
+Antwort 404: Nicht gefunden
 	\item Put
 	\item Delete
 	\end{itemize}
