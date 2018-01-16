@@ -4,18 +4,19 @@ Hier werden die Schnittstellen beschrieben, die mithilfe vom Restservice vom Ser
 \begin{enumerate}
 \item Operationen auf einen Nutzer
 	\begin{itemize}
-	\item Post \\
+	\item Post (erstellung von einem Nutzer) \\
 Hier ist die Erstellung von einem Nutzer m\"oglich. Wenn ein Nutzer unsere App. benutzen will, muss er erstmal sich registrieren lassen. Daf\"ur braucht man: \\
-	- Ein Username als "String" \\
-	- Ein Passwort als "String" \\
-Es geht hier um eine Jason-Datei. \\
-Wir bekommen vom Server eine Antwort als Jason-Datei \\
+	- Ein Username \\
+	- Ein Passwort \\
 Antwort 200: Die Operation war erfolgreich mit den Value: \\ 
-	id: Der Nutzer bekomme ein Id \\ 
-	Parent: Ein Verzeichnis ist f\"ur ihn automatisch erstellt \\ 
 Antwort 400: Schlechte Anfrage, falls der Nutzer ung\"ultige oder schon vorhandene Parameter eintr\"agt.  
 
-	\item Post
+	\item Post (Nutzer im System einloggen) \\
+Hier ist das Einloggen von einem Nutzer im System möglich. Diese Funktionnalität ist nur möglich, wenn der Nutzer schon registriert ist. Daf\"ur braucht man: \\
+	- Ein Username \\
+	- Ein Passwort \\
+Antwort 200: Die Operation war erfolgreich mit den Value: \\ 
+Antwort 400: Schlechte Anfrage, falls der Nutzer ung\"ultige oder schon vorhandene Parameter eintr\"agt.  
 	\item delete
 	\end{itemize}
 
