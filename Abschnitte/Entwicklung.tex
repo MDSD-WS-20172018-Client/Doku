@@ -53,7 +53,7 @@ Antwort 400: Schlechte Anfrage \\
 Antwort 403: Verboten \\
 Antwort 404: Nicht gefunden
 	\item Delete (Löschen von einer Datei)
-Hier ist das Löschen von einer Datei m\"oglich. Daf\"ur braucht man: \\
+Hier ist das L\"oschen von einer Datei m\"oglich. Daf\"ur braucht man: \\
 	- Der Token \\
 	- Der FolderId (Id vom \"ubergeordneten Ordner) \\
 	- Die DateiId (Id von der Datei) \\
@@ -64,7 +64,13 @@ Antwort 404: Nicht gefunden
 
 \item Operationen auf ein verzeichnis
 	\begin{itemize}
-	\item Get
+	\item Get (Herunterladen von einem Ordner)
+Hier ist das herunterladen von einem Ordner m\"oglich. Daf\"ur braucht man: \\
+	- Der Token \\
+	- Der FolderId (Id vom  Ordner) \\
+Antwort 200: Die Operation war erfolgreich \\ 
+Antwort 403: Verboten \\
+Antwort 404: Nicht gefunden
 	\item Post
 	\item Put
 	\item Delete
