@@ -2,11 +2,46 @@
 	
 	\subsection{$\text{MD}^2$}
 	$\text{MD}^2$-DSL ist eine dom\"anenspezifische Sprache (DSL), die entwickelt wurde um datengetriebene Business-Apps in textueller Form beschreiben zu k\"onnen \cite{DSLMD2_2013}.\\
-	$\text{MD}^2$ ist ein akademischer Prototyp, der auch Anwendung in praktischen Projekten findet und dabei auch weiterentwickelt wird \cite{MDCP2015}.
+	$\text{MD}^2$ ist ein akademischer Prototyp, der auch Anwendung in praktischen Projekten findet und dabei auch weiterentwickelt wird \cite{MDCP2015}.\\
+	In diesem Projekt wurde die aktuelle Version von $\text{MD}^2$ verwendet, die auf dem git-Repository\footnote{https://github.com/wwu-pi/md2-framework} zur Verf\"ugung stand (Stand: 23.11.2017). Diese steht als Plugin f\"ur Eclipse zur Verf\"ugung.\\
+	$\text{MD}^2$ ist nach dem MVC Prinzip aufgebaut und hat dazu Workflow-Elemente, die spezielle Controller-Elemente sind\cite{Handbookmd2}. Durch das erste Workflow-Element wird immer beim Build des Projekts eine "StartActivity" erzeugt, deren View Buttons enth\"alt zum Starten der Programmierten App.\\
+	Der Umfang, der in dem Handbuch f\"ur Modellierer versprochen wurde konnte nicht komplett genutzt werden. Au\ss{}erdem gab es Standardfunktionen, wie das Schlie\ss{}en der App, die nicht umgesetzt waren.
 	
-	\subsection{Androidstudio}
-Wir benutzen diese freie Integrierte Entwiclungsumgebung f\"ur Android. Damit testen wir unsere app auf Android geräte. Hier gibt es auch die m\"oglichkeit, virtuelle ger\"ate zu erstellen (Eingabe wie Betriebsysteme und die Gr\"o{\ss}e der Ger\"ate einzugeben).
-Der MD2 erstellte Code wird dann mit Androidstudio getestet. Im Verzeichnis src-gen wird die App automatisch generiert und sie kann mit Androidstudio ausgef\"uhrt werden.
+	\subsection{Android Studio}
+	In diesem Projekt wird die freie integrierte Entwicklungsumgebung Android Studio zum Testen der $\text{MD}^2$-App verwendet und um den klassisch programmierten Client zu implementieren. Dadurch k\"onnen Tests auf Smartphones und Emulatoren durchgef\"uhrt werden. Dabei wird auch festgestellt, ob der erzeugte Code von Eclipse und den zus\"atzlich installierten Plugins unabh\"angig ist.
 
-	\subsection{FeatureProvider}
+	\subsection{Feature Provider}
+	Der Feature Provider ist ein Tool, das nur f\"ur die in diesem Projekt entwickelten App erzeugt wurde. Es ist ein Prototyp, der bei seiner Entwicklung dazu beitr\"agt, die Probleme bei MDSD zu verstehen. Ein paar Features k\"onnen in Verbindung mit einer $\text{MD}^2$-App allerdings allgemein genutzt werden.\\
+	Nachfolgend werden ein paar Beispiele gegeben, wie der Feature Provider arbeitet.\\
+	Das Grund-Feature, dass der Feature Provider immer hinzuf\"ugt ist, dass eine App geschlossen wird, wenn man die erste View sieht und auf den Back-Button dr\"uckt. Der Code, der von $\text{MD}^2$ in der "StartActivity" f\"ur die Aktion "onBackPressed" erzuegt wird sieht wie folgt aus.
+	
+	\begin{small}
+		\begin{verbatim}
+		public void onBackPressed() {
+		    // remain on start screen
+		}
+		\end{verbatim}
+	\end{small}
+
+	\noindent Hier ist zu erkennen, dass diese Methode keine Funktion enth\"alt. Aus diesem Grund hat es keine Wirkung, wenn man auf den "Back Button" dr\"uckt.\\
+	Der Feature Provider \"offnet die Java-Datei dieser Activity und sucht nach dem Methodenkopf der "onBackPressed"-Methode. Der Kommentar wird dann durch den Code zum Schlie\ss{}en der App ersetzt. Dabei entsteht der folgende Code.
+	
+	\begin{small}
+		\begin{verbatim}
+		public void onBackPressed() {
+		    Intent intent = new Intent(Intent.ACTION_MAIN);
+		    intent.addCategory(Intent.CATEGORY_HOME);
+		    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		    startActivity(intent);
+		    finish();
+		    System.exit(0);
+		}
+		\end{verbatim}
+	\end{small}
+
+	\noindent F\"ur die Erzeugung einiger Features m\"ussen mehrere Dateien ver\"andert werden. Zum Beispiel bei der Erzeugung der Funktionen zur Kommunikation mit dem REST-Service. Daf\"ur wird eine Bibliothek verwendet, die nicht zum Standard von Android geh\"ort. Diese muss dann in die "build.gradle"-Datei im App-Verzeichnis im Abschnitt "dependencies" eingetragen werden. Hier scheint die Reihenfolge der Eintragungen nicht wichtig zu sein, also kann die Eintragung auch am Anfang der Datei erfolgen. Der Feature Provider sucht in der Datei nach der Zeichenkette "dependencies{" und f\"ugt danach die neue Bibliothek hinzu.\\
+	Die Erzeugung der Klassen zur Kommunikation mit dem REST-Service erfolgt mit Hilfe von Klassen, die aus der klassischen App kopiert werden. Diese wurden im Vorfeld so ver\"andert, dass sie in das Projekt nur eingef\"ugt werden m\"ussen und anschlie\ss{}end nur noch verwendet werden m\"ussen. Daf\"ur hat der Feature Provider einen Ordner (Quelldateien), in der vollst\"andige nutzbare Klassen abgelegt sind.\\
+	Wenn eine Ver\"anderung einer Klasse dazu f\"uhrt, dass eine neue Klasse verwendet wird ist es notwendig, dass entsprechende Import-Statements am Anfang der Klasse erg\"anzt werden. Da die Reheihenfolge hier beliebig ist, werden die neuen Importe direkt nach dem Eintrag "package" gemacht.\\
+	Die Erweiterung einer View ben\"otigt mindestens Ver\"anderungen einer Activity, einer XML-Datei zu der View und der "ids.xml"-Datei. Die richtige Platzierung ist in der XML-Datei zur View n\"otig, da diese die Position auf der View beeinflusst. In diesem Projekt wurde implementiert, dass zwei ListView-Elemente in der "DateiDownloadActivity" hinzugef\"ugt werden. Die Platzierung in der View kann dabei frei gew\"ahlt werden. Daf\"ur werden die IDs f\"ur die View-Elemente dem Benutzer des Feature Providers gezeigt und dieser kann w\"ahlen, ob er das Element vor oder hinter einem bestimmten Element einf\"ugen will. Au\ss{}erdem werden die IDs der neu hizugef\"ugten Elemente in der "ids.xml"-Datei erg\"anzt. In der Activity wird dann die Lebenszyklusmethode "onCreate" so ver\"andert, dass die ListViews den gew\"unschten Inhalt anzeigen.\\
+	Zum Einf\"ugen einer Aktion werden die Klassen im Package "md2.testprojekt.md2.controller.action" ver\"andert. Hier liegen die Klassen, die f\"ur die erzeugten Aktionen benutzt werden. Z.B. wenn man einen Wechsel der Views erzeugt hat, die mit Hilfe eines Buttons realisiert wird.
 	

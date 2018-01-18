@@ -7,6 +7,11 @@ Heitk\"otter, H., Majchrzak, T.~A., and Kuchen, H. (2013).
 \newblock {\em Proceedings der 6. Arbeitstagung Programmiersprachen (ATPS),
   Software Engineering}.
 
+\bibitem[Kuchen and Ernsting, 2015]{Handbookmd2}
+Kuchen, H. and Ernsting, J. (2015).
+\newblock Md2 – handbook.
+\newblock Technical report, University of M\"unster.
+
 \bibitem[Majchrzak et~al., 2015]{MDCP2015}
 Majchrzak, T.~A., Ernsting, J., and Kuchen, H. (2015).
 \newblock Model-driven cross-platform apps: Towards business practicability.
