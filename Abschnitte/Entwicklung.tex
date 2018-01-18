@@ -1,100 +1,121 @@
 \section{\uppercase{Entwicklung}}
 \subsection{Schnittstellen}
-Hier werden die Schnittstellen beschrieben, die mithilfe vom Restservice vom Server zur verf\"ugung stehen.
+Hier werden die Schnittstellen beschrieben, die mithilfe vom Restservice vom Server zur Verf\"ugung stehen. Sie basieren auf Standard-HTTP-Operationen.
 \begin{enumerate}
-\item Operationen auf einen Nutzer
-	\begin{itemize}
-	\item Post (erstellung von einem Nutzer) \\
-Hier ist die Erstellung von einem Nutzer m\"oglich. Wenn ein Nutzer unsere App. benutzen will, muss er erstmal sich registrieren lassen. Daf\"ur braucht man: \\
-	- Ein Username \\
-	- Ein Passwort \\
+\item Nutzeroperationen
+\begin{itemize}
+\item Erstellung von einem Nutzer(Post) \\
+Hier ist die Erstellung von einem Nutzer m\"oglich. Wenn ein Nutzer unsere App. benutzen will, muss er erstmal sich registrieren lassen. Daf\"ur braucht man: 
+\begin{itemize}
+\item Ein Username 
+\item Ein Passwort 
+\end{itemize}
 Antwort 200: Die Operation war erfolgreich\\ 
-Antwort 400: Schlechte Anfrage, falls der Nutzer ung\"ultige oder schon vorhandene Parameter eintr\"agt.  
+Antwort 400: Schlechte Anfrage, falls der Nutzer ung\"ultige oder schon vorhandene Parameter eintr\"agt. 
 
-	\item Post (Nutzer im System einloggen) \\
-Hier ist das Einloggen von einem Nutzer im System m\"oglich. Diese Funktionnalit\"at ist nur m\"oglich, wenn der Nutzer schon registriert ist. Daf\"ur braucht man: \\
-	- Ein Username \\
-	- Ein Passwort \\
+\item Nutzer im System einloggen (Post) \\
+Hier ist das Einloggen von einem Nutzer im System m\"oglich. Diese Funktionnalit\"at ist nur m\"oglich, wenn der Nutzer schon registriert ist. Daf\"ur braucht man: 
+\begin{itemize}
+\item Ein Username 
+\item Ein Passwort 
+\end{itemize}
 Antwort 200: Die Operation war erfolgreich \\ 
-Antwort 400: Schlechte Anfrage, falls der Nutzer ung\"ultige oder schon vorhandene Parameter eintr\"agt.  
-	\item Delete (Meldet die aktuelle angemeldete Benutzersitzung ab)
+Antwort 400: Schlechte Anfrage, falls der Nutzer ung\"ultige oder schon vorhandene Parameter eintr\"agt. 
+\item Delete (Meldet die aktuelle angemeldete Benutzersitzung ab)
 Hier ist die Abmeldung von der Sitzung m\"oglich. Daf\"ur braucht man den Token vom Nutzer \\
 Antwort 200: Die Operation war erfolgreich \\ 
-Antwort 400: Schlechte Anfrage, falls der Nutzer ung\"ultige oder schon vorhandene Parameter eintr\"agt.  
-	\end{itemize}
+Antwort 400: Schlechte Anfrage, falls der Nutzer ung\"ultige oder schon vorhandene Parameter eintr\"agt. 
+\end{itemize}
 
-\item Operationen auf eine Datei
-	\begin{itemize}
-	\item Post (Hochladen von Dateien)
-Hier ist das Hochladen von einer Datei m\"oglich. Daf\"ur braucht man: \\
-	- Der Token \\
-	- Der FolderId \\
-	- Die Datei \\
+\item Dateioperationen
+\begin{itemize}
+\item Hochladen von Dateien(Post)
+Hier ist das Hochladen von einer Datei m\"oglich. Daf\"ur braucht man: 
+\begin{itemize}
+\item Der Token
+\item Der FolderId 
+\item Die Datei
+\end{itemize}
 Antwort 200: Die Operation war erfolgreich \\ 
 Antwort 400: Schlechte Anfrage, Im Fall die Gr\"o{\ss}e der Datei gr\"o{\ss}er als 30Mb ist. \\
 Antwort 403: Verboten \\
 Antwort 404: Nicht gefunden
-	\item Get (Herunterladen von Dateien)
-Hier ist das herunterladen von einer Datei m\"oglich. Daf\"ur braucht man: \\
-	- Der Token \\
-	- Der FolderId (Id vom \"ubergeordneten Ordner) \\
-	- Die DateiId (Id von der Datei) \\
+\item Herunterladen von Dateien (Get)
+Hier ist das herunterladen von einer Datei m\"oglich. Daf\"ur braucht man:
+\begin{itemize}
+\item Der Token
+\item Der FolderId (Id vom \"ubergeordneten Ordner)
+\item Datei (Id von der Datei)
+\end{itemize}
 Antwort 200: Die Operation war erfolgreich \\ 
 Antwort 403: Verboten \\
 Antwort 404: Nicht gefunden
-	\item Put (Bearbeitung vom Dateiname)
-Hier ist die Bearbeitung von einer Datei m\"oglich. Daf\"ur braucht man: \\
-	- Der Token \\
-	- Der FolderId (Id vom \"ubergeordneten Ordner) \\
-	- Die DateiId (Id von der Datei) \\
-	- Der Name von der Datei \\
+\item Bearbeitung vom Dateiname (Put)
+Hier ist die Bearbeitung von einer Datei m\"oglich. Daf\"ur braucht man:
+\begin{itemize}
+\item Der Token
+\item Der FolderId (Id vom \"ubergeordneten Ordner)
+\item Die Datei (Id von der Datei)
+\item Der Name von der Datei 
+\end{itemize}
+
 Antwort 200: Die Operation war erfolgreich \\ 
 Antwort 400: Schlechte Anfrage \\
 Antwort 403: Verboten \\
 Antwort 404: Nicht gefunden
-	\item Delete (Löschen von einer Datei)
-Hier ist das L\"oschen von einer Datei m\"oglich. Daf\"ur braucht man: \\
-	- Der Token \\
-	- Der FolderId (Id vom \"ubergeordneten Ordner) \\
-	- Die DateiId (Id von der Datei) \\
+\item Löschen von einer Datei (Delete)
+Hier ist das L\"oschen von einer Datei m\"oglich. Daf\"ur braucht man: 
+\begin{itemize}
+\item Der Token
+\item Der FolderId (Id vom \"ubergeordneten Ordner)
+\item Die DateiID (Id von der Datei)
+\end{itemize}
 Antwort 200: Die Operation war erfolgreich \\ 
 Antwort 403: Verboten \\
 Antwort 404: Nicht gefunden
-	\end{itemize}
+\end{itemize}
 
-\item Operationen auf ein verzeichnis
-	\begin{itemize}
-	\item Get (Herunterladen von einem Ordner)
-Hier ist das herunterladen von einem Ordner m\"oglich. Daf\"ur braucht man: \\
-	- Der Token \\
-	- Der FolderId (Id vom  Ordner) \\
+\item Verzeichnisoperationen
+\begin{itemize}
+\item Herunterladen von einem Ordner (Get)
+Hier ist das herunterladen von einem Ordner m\"oglich. Daf\"ur braucht man: 
+\begin{itemize}
+\item Der Token
+\item Der FolderId (Id vom Ordner) 
+\end{itemize}
 Antwort 200: Die Operation war erfolgreich \\ 
 Antwort 403: Verboten \\
 Antwort 404: Nicht gefunden
-	\item Post (Hochladen von einem Ordner) \\
-Hier ist das Hochladen von einem Ordner m\"oglich. Daf\"ur braucht man: \\
-	- Der Token \\
-	- Der FolderId \\
-	- Der Ordner\\
+\item Hochladen von einem Ordner (Post) \\
+Hier ist das Hochladen von einem Ordner m\"oglich. Daf\"ur braucht man:
+\begin{itemize}
+\item Der Token
+\item Der FolderId 
+\item Der Ordner 
+\end{itemize}
 Antwort 200: Die Operation war erfolgreich \\ 
 Antwort 400: Schlechte Anfrage, Im Fall die Gr\"o{\ss}e der Datei gr\"o{\ss}er als 30Mb ist. \\
 Antwort 403: Verboten \\
 Antwort 404: Nicht gefunden
-	\item Put (Bearbeitung von einem Ordner) \\
-Hier ist die Bearbeitung von einem Ordner m\"oglich. Daf\"ur braucht man: \\
-	- Den Token \\
-	- Den FolderId (Id vom \"ubergeordneten Ordner) \\
-	- Den Folder (z.B ein neur Name) \\
+\item Bearbeitung von einem Ordner (Put) \\
+Hier ist die Bearbeitung von einem Ordner m\"oglich. Daf\"ur braucht man: 
+\begin{itemize}
+\item Der Token
+\item Der FolderId (Id vom \"ubergeordneten Ordner) 
+\item Den Folder (z.B ein neur Name) 
+\end{itemize}
 Antwort 200: Die Operation war erfolgreich \\ 
 Antwort 400: Schlechte Anfrage \\
 Antwort 403: Verboten \\
 Antwort 404: Nicht gefunden
-	\item Delete
-Hier ist das L\"oschen von einem Ordner m\"oglich. Daf\"ur braucht man: \\
-	- Der Token \\
-	- Der FolderId (Id vom \"ubergeordneten Ordner) \\
+\item Delete \\
+Hier ist das L\"oschen von einem Ordner m\"oglich. Daf\"ur braucht man: 
+\begin{itemize}
+\item Der Token
+\item Der FolderId (Id vom \"ubergeordneten Ordner) 
+\end{itemize}
 Antwort 200: Die Operation war erfolgreich \\ 
 Antwort 403: Verboten \\
 Antwort 404: Nicht gefunden
-	\end{itemize}
+\end{itemize}
 \end{enumerate}
