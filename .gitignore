@@ -9,5 +9,6 @@
 *.fot
 *.cb
 *.cb2
+*.blg
 *synctex.gz
 *.bib.bak
