@@ -10,8 +10,18 @@ Hier ist die Erstellung von einem Nutzer m\"oglich. Wenn ein Nutzer unsere App. 
 \item Ein Username 
 \item Ein Passwort 
 \end{itemize}
-Antwort 200: Die Operation war erfolgreich\\ 
-Antwort 400: Schlechte Anfrage, falls der Nutzer ung\"ultige oder schon vorhandene Parameter eintr\"agt. 
+Antwort 200: Die Operation war erfolgreich. Die Dateien, die zurück geschickt sind, sind:
+\begin{itemize}
+\item Token
+\item Id (FolderID)
+\item Home Ordner
+	\begin{itemize}
+	\item Subfolder (id, name)
+	\item Files (id, name)
+	\end{itemize}
+\end{itemize}
+
+Antwort 400: Schlechte Anfrage, falls der Nutzer ung\"ultige oder schon vorhandene Parameter eintr\"agt (Passwort zu kurz oder Nutzername zu kurz)
 
 \item Nutzer im System einloggen (Post) \\
 Hier ist das Einloggen von einem Nutzer im System m\"oglich. Diese Funktionnalit\"at ist nur m\"oglich, wenn der Nutzer schon registriert ist. Daf\"ur braucht man: 
@@ -19,26 +29,38 @@ Hier ist das Einloggen von einem Nutzer im System m\"oglich. Diese Funktionnalit
 \item Ein Username 
 \item Ein Passwort 
 \end{itemize}
-Antwort 200: Die Operation war erfolgreich \\ 
-Antwort 400: Schlechte Anfrage, falls der Nutzer ung\"ultige oder schon vorhandene Parameter eintr\"agt. 
+Antwort 200: Die Operation war erfolgreich. Die Dateien, die zur\"uck geschickt sind, sind:
+\begin{itemize}
+\item Token
+\item Id (FolderID)
+\item Home Ordner
+	\begin{itemize}
+	\item Subfolder (id, name)
+	\end{itemize}
+	\item Files (id, name)
+\end{itemize}
+Antwort 400: Schlechte Anfrage, falls der Nutzer ung\"ultige Parameter eintr\"agt. 
 \item Delete (Meldet die aktuelle angemeldete Benutzersitzung ab)
 Hier ist die Abmeldung von der Sitzung m\"oglich. Daf\"ur braucht man den Token vom Nutzer \\
-Antwort 200: Die Operation war erfolgreich \\ 
+Antwort 200: Die Operation war erfolgreich. 
 Antwort 400: Schlechte Anfrage, falls der Nutzer ung\"ultige oder schon vorhandene Parameter eintr\"agt. 
 \end{itemize}
 
 \item Dateioperationen
 \begin{itemize}
-\item Hochladen von Dateien(Post)
+\item Hochladen von Dateien (Post)
 Hier ist das Hochladen von einer Datei m\"oglich. Daf\"ur braucht man: 
 \begin{itemize}
 \item Der Token
 \item Der FolderId 
 \item Die Datei
 \end{itemize}
-Antwort 200: Die Operation war erfolgreich \\ 
+Antwort 200: Die Operation war erfolgreich. Die Dateien, die zur\"uck geschickt sind, sind:
+\begin{itemize}
+\item Id (FolderID)
+\end{itemize}
 Antwort 400: Schlechte Anfrage, Im Fall die Gr\"o{\ss}e der Datei gr\"o{\ss}er als 30Mb ist. \\
-Antwort 403: Verboten \\
+Antwort 403: Verboten (ung\"ultige Token) \\
 Antwort 404: Nicht gefunden
 \item Herunterladen von Dateien (Get)
 Hier ist das herunterladen von einer Datei m\"oglich. Daf\"ur braucht man:
@@ -47,8 +69,11 @@ Hier ist das herunterladen von einer Datei m\"oglich. Daf\"ur braucht man:
 \item Der FolderId (Id vom \"ubergeordneten Ordner)
 \item Datei (Id von der Datei)
 \end{itemize}
-Antwort 200: Die Operation war erfolgreich \\ 
-Antwort 403: Verboten \\
+Antwort 200: Die Operation war erfolgreich. Die Dateien, die zur\"uck geschickt sind, sind:
+\begin{itemize}
+\item Id (FolderID)
+\end{itemize}
+Antwort 403: Verboten (ung\"ultige Token) \\
 Antwort 404: Nicht gefunden
 \item Bearbeitung vom Dateiname (Put)
 Hier ist die Bearbeitung von einer Datei m\"oglich. Daf\"ur braucht man:
@@ -59,7 +84,15 @@ Hier ist die Bearbeitung von einer Datei m\"oglich. Daf\"ur braucht man:
 \item Der Name von der Datei 
 \end{itemize}
 
-Antwort 200: Die Operation war erfolgreich \\ 
+Antwort 200: Die Operation war erfolgreich. Die Dateien, die zur\"uck geschickt sind, sind:
+\begin{itemize}
+\item Id (FolderID)
+\item Home Ordner
+	\begin{itemize}
+	\item Subfolder (id, name)
+	\item Files (id, name)
+	\end{itemize}
+\end{itemize} 
 Antwort 400: Schlechte Anfrage \\
 Antwort 403: Verboten \\
 Antwort 404: Nicht gefunden
@@ -70,8 +103,8 @@ Hier ist das L\"oschen von einer Datei m\"oglich. Daf\"ur braucht man:
 \item Der FolderId (Id vom \"ubergeordneten Ordner)
 \item Die DateiID (Id von der Datei)
 \end{itemize}
-Antwort 200: Die Operation war erfolgreich \\ 
-Antwort 403: Verboten \\
+Antwort 200: Die Operation war erfolgreich. 
+Antwort 403: Verboten (ung\"ultige Token) \\
 Antwort 404: Nicht gefunden
 \end{itemize}
 
@@ -83,17 +116,33 @@ Hier ist das herunterladen von einem Ordner m\"oglich. Daf\"ur braucht man:
 \item Der Token
 \item Der FolderId (Id vom Ordner) 
 \end{itemize}
-Antwort 200: Die Operation war erfolgreich \\ 
+Antwort 200: Die Operation war erfolgreich. Die Dateien, die zur\"uck geschickt sind, sind:
+\begin{itemize}
+\item Id (FolderID)
+\item Home Ordner
+	\begin{itemize}
+	\item Subfolder (id, name)
+	\item Files (id, name)
+	\end{itemize}
+\end{itemize} 
 Antwort 403: Verboten \\
 Antwort 404: Nicht gefunden
-\item Hochladen von einem Ordner (Post) \\
+\item Erstellen eines Ordners (Post) \\
 Hier ist das Hochladen von einem Ordner m\"oglich. Daf\"ur braucht man:
 \begin{itemize}
 \item Der Token
 \item Der FolderId 
 \item Der Ordner 
 \end{itemize}
-Antwort 200: Die Operation war erfolgreich \\ 
+Antwort 200: Die Operation war erfolgreich. Die Dateien, die zur\"uck geschickt sind, sind:
+\begin{itemize}
+\item Id (FolderID)
+\item Home Ordner
+	\begin{itemize}
+	\item Subfolder (id, name)
+	\item Files (id, name)
+	\end{itemize}
+\end{itemize}
 Antwort 400: Schlechte Anfrage, Im Fall die Gr\"o{\ss}e der Datei gr\"o{\ss}er als 30Mb ist. \\
 Antwort 403: Verboten \\
 Antwort 404: Nicht gefunden
@@ -104,7 +153,15 @@ Hier ist die Bearbeitung von einem Ordner m\"oglich. Daf\"ur braucht man:
 \item Der FolderId (Id vom \"ubergeordneten Ordner) 
 \item Den Folder (z.B ein neur Name) 
 \end{itemize}
-Antwort 200: Die Operation war erfolgreich \\ 
+Antwort 200: Die Operation war erfolgreich. Die Dateien, die zur\"uck geschickt sind, sind:
+\begin{itemize}
+\item Id (FolderID)
+\item Home Ordner
+	\begin{itemize}
+	\item Subfolder (id, name)
+	\item Files (id, name)
+	\end{itemize}
+\end{itemize}
 Antwort 400: Schlechte Anfrage \\
 Antwort 403: Verboten \\
 Antwort 404: Nicht gefunden
@@ -114,7 +171,7 @@ Hier ist das L\"oschen von einem Ordner m\"oglich. Daf\"ur braucht man:
 \item Der Token
 \item Der FolderId (Id vom \"ubergeordneten Ordner) 
 \end{itemize}
-Antwort 200: Die Operation war erfolgreich \\ 
+Antwort 200: Die Operation war erfolgreich.
 Antwort 403: Verboten \\
 Antwort 404: Nicht gefunden
 \end{itemize}
